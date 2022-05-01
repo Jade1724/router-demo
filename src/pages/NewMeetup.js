@@ -1,6 +1,8 @@
+import { useNavigate} from 'react-router-dom';
 import NewMeetupForm from "../components/meetups/NewMeetupForm";
 
 function NewMeetupsPage() {
+  const navigate = useNavigate();
   function addMeetupHandler(meetupData) {
     fetch(
       "",
@@ -11,7 +13,9 @@ function NewMeetupsPage() {
           "Content-Type": "application/json",
         },
       }
-    );
+    ).then(() => {
+      navigate('/', {replace: true});
+    });
   }
 
   return (
